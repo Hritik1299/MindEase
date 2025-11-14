@@ -1,3 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Custom pulse glow animation */
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
+  }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 22px rgba(255,255,255,0.75);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 1.5s infinite ease-in-out;
+}
+
+/* Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 999px;
+}
