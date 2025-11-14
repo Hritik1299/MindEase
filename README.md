@@ -80,20 +80,20 @@ Agora Access Token generator
 📁 Project Structure
 mindease/
  ├── client/        # React frontend
- │   ├── src/
- │   │   ├── App.jsx
- │   │   ├── components/
- │   │   │   ├── VoiceRoom.jsx
- │   │   │   └── MoodChart.jsx
- │   │   └── LandingPage.jsx
- │   └── index.html
+ │   ├── src/  
+ │   │   ├── App.jsx   
+ │   │   ├── components/  
+ │   │   │   ├── VoiceRoom.jsx  
+ │   │   │   └── MoodChart.jsx  
+ │   │   └── LandingPage.jsx  
+ │   └── index.html  
  │
  │
  ├── server/        # Node backend
- │   ├── index.js
- │   ├── package.json
- │   ├── .env
- │   └── Agora token generator
+ │   ├── index.js  
+ │   ├── package.json  
+ │   ├── .env  
+ │   └── Agora token generator   
  │
  ├── README.md
  └── package.json (optional root)
