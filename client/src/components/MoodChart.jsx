@@ -4,33 +4,41 @@ import {
   Line,
   ResponsiveContainer,
   Tooltip,
-  YAxis,
+  YAxis
 } from "recharts";
 
 export default function MoodChart({ data }) {
   const formatted = data.map((d, i) => ({
-    index: i + 1,
-    mood: d.mood,
+    x: i + 1,
+    mood: d.mood
   }));
 
   return (
-    <div className="bg-white p-5 rounded-3xl shadow-xl border border-purple-200">
-      <h2 className="text-lg font-semibold mb-3">📊 Mood Trend</h2>
+    <div>
+      <h2 className="text-xl font-semibold text-purple-300 mb-4">📊 Mood Trend</h2>
 
       {formatted.length === 0 ? (
-        <p className="text-gray-500 italic text-sm">No mood data yet.</p>
+        <p className="text-gray-400 text-sm italic">No mood data yet</p>
       ) : (
-        <div className="h-48">
+        <div style={{ height: 200 }}>
           <ResponsiveContainer>
             <LineChart data={formatted}>
-              <YAxis domain={[-10, 10]} />
-              <Tooltip />
+              <YAxis domain={[-10, 10]} stroke="#aaa" />
+              <Tooltip
+                contentStyle={{
+                  background: "rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  backdropFilter: "blur(5px)",
+                  borderRadius: "12px",
+                  color: "white"
+                }}
+              />
               <Line
                 type="monotone"
                 dataKey="mood"
-                stroke="#7C3AED"
+                stroke="#C084FC"
                 strokeWidth={3}
-                dot={{ stroke: "#7C3AED", strokeWidth: 2 }}
+                dot={{ stroke: "#C084FC", strokeWidth: 2 }}
               />
             </LineChart>
           </ResponsiveContainer>
