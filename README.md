@@ -190,11 +190,6 @@ Push notifications for check-ins
 🧑‍💻 Contributors
 
 Team Noob – HackFest 2025
-If you want me to add your names here, just tell me 👍
-
-📜 License
-
-This project is licensed for educational & hackathon use.
 
 ❤️ Support
 
