@@ -7,6 +7,16 @@ const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
 export default function VoiceRoom() {
   const [joined, setJoined] = useState(false);
   const [localTrack, setLocalTrack] = useState(null);
+  const [muted, setMuted] = useState(false);
+
+  useEffect(() => {
+    client.on("user-published", async (user, mediaType) => {
+      await client.subscribe(user, mediaType);
+      if (mediaType === "audio") user.audioTrack?.play();
+    });
+
+    return () => client.removeAllListeners();
+  }, []);
 
   const joinChannel = async () => {
     const channel = "mindease_room";
@@ -15,49 +25,75 @@ export default function VoiceRoom() {
       const { appId, token } = res.data;
 
       await client.join(appId, channel, token, null);
-      const audioTrack = await AgoraRTC.createMicrophoneAudioTrack();
+      const micTrack = await AgoraRTC.createMicrophoneAudioTrack();
+      await client.publish(micTrack);
 
-      await client.publish(audioTrack);
-      setLocalTrack(audioTrack);
+      setLocalTrack(micTrack);
       setJoined(true);
+      setMuted(false);
+
     } catch (err) {
       console.error(err);
-      alert("Failed to join voice session.");
+      alert("Voice join failed");
     }
   };
 
   const leaveChannel = async () => {
     try {
-      await client.leave();
       localTrack?.stop();
       localTrack?.close();
+      await client.leave();
+
       setJoined(false);
+      setMuted(false);
+
     } catch (err) {
       console.error(err);
     }
   };
 
+  const toggleMute = async () => {
+    if (!localTrack) return;
+
+    if (muted) {
+      await localTrack.setEnabled(true);
+      setMuted(false);
+    } else {
+      await localTrack.setEnabled(false);
+      setMuted(true);
+    }
+  };
+
   return (
-    <div className="bg-white p-4 rounded-2xl shadow-xl border border-purple-200">
-      <h2 className="text-lg font-semibold mb-1">🎙️ Voice Session</h2>
-      <p className="text-sm text-gray-600 mb-3">
-        Talk aloud and let MindEase listen & respond.
+    <div>
+      <h2 className="text-xl font-semibold text-purple-300 mb-2">🎙️ Voice Session</h2>
+      <p className="text-sm text-gray-300 mb-4">
+        Speak naturally — MindEase listens privately.
       </p>
 
       {!joined ? (
         <button
           onClick={joinChannel}
-          className="px-4 py-2 bg-green-600 text-white rounded-xl hover:bg-green-700 transition shadow"
+          className="px-5 py-2 bg-green-600 rounded-full shadow-lg hover:bg-green-700 transition"
         >
           Join Voice Room
         </button>
       ) : (
-        <button
-          onClick={leaveChannel}
-          className="px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition shadow"
-        >
-          Leave Room
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleMute}
+            className="px-4 py-2 bg-yellow-500 rounded-full shadow-lg hover:bg-yellow-600 transition"
+          >
+            {muted ? "Unmute" : "Mute"}
+          </button>
+
+          <button
+            onClick={leaveChannel}
+            className="px-4 py-2 bg-red-600 rounded-full shadow-lg hover:bg-red-700 transition"
+          >
+            Leave
+          </button>
+        </div>
       )}
     </div>
   );
