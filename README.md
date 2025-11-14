@@ -78,7 +78,7 @@ Sentiment.js
 Agora Access Token generator
 
 📁 Project Structure
-mindease/
+mindease/  
  ├── client/        # React frontend
  │   ├── src/  
  │   │   ├── App.jsx   
@@ -89,8 +89,8 @@ mindease/
  │   └── index.html  
  │
  │
- ├── server/        # Node backend
- │   ├── index.js  
+ ├── server/         # Node backend
+ │   ├── index.js   
  │   ├── package.json  
  │   ├── .env  
  │   └── Agora token generator   
