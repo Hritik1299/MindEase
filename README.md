@@ -88,6 +88,7 @@ mindease/
  │   │   └── LandingPage.jsx
  │   └── index.html
  │
+ │
  ├── server/        # Node backend
  │   ├── index.js
  │   ├── package.json
