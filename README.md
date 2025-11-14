@@ -79,7 +79,7 @@ Agora Access Token generator
 
 📁 Project Structure
 mindease/  
- ├── client/        # React frontend
+ ├── client/        # React frontend   
  │   ├── src/  
  │   │   ├── App.jsx   
  │   │   ├── components/  
@@ -89,7 +89,7 @@ mindease/
  │   └── index.html  
  │
  │
- ├── server/         # Node backend
+ ├── server/         # Node backend   
  │   ├── index.js   
  │   ├── package.json  
  │   ├── .env  
