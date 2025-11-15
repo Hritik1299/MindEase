@@ -42,7 +42,9 @@ No personal data is stored on the server. Mood history remains local to the user
 
 🖼️ Screenshots
 
-(Add when your UI is ready)
+ <img width="1917" height="922" alt="image" src="https://github.com/user-attachments/assets/a674e87d-cdaf-4dd6-88f0-4cdc9f2fe481" />
+  <img width="647" height="795" alt="Screenshot 2025-11-15 053402" src="https://github.com/user-attachments/assets/344618b1-1183-461c-840f-72636b135808" />
+
 
 /screenshots
   ├── landing.png
@@ -83,6 +85,7 @@ mindease/
  │   ├── src/  
  │   │   ├── App.jsx   
  │   │   ├── components/  
+ │   │   │   ├── Avatar.jsx  
  │   │   │   ├── VoiceRoom.jsx  
  │   │   │   └── MoodChart.jsx  
  │   │   └── LandingPage.jsx  
