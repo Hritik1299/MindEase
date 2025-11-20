@@ -46,11 +46,7 @@ No personal data is stored on the server. Mood history remains local to the user
   <img width="647" height="795" alt="Screenshot 2025-11-15 053402" src="https://github.com/user-attachments/assets/344618b1-1183-461c-840f-72636b135808" />   
 
 
-/screenshots
-  ├── landing.png
-  ├── chat.png
-  ├── voice-room.png
-  └── mood-chart.png
+
 
 🛠️ Tech Stack
 Frontend
